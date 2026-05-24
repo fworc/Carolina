@@ -144,7 +144,7 @@
 
                 <div class="grid grid-cols-2 gap-2 mb-2">
                     <div class="video-container relative rounded-lg overflow-hidden bg-gray-300 aspect-[3/4] group shadow-sm cursor-pointer">
-                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="metadata" muted="">
+                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="auto" muted="">
                             <source src="media/iux06eqabiz2.mp4" type="video/mp4">
                         </video>
                         <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity">
@@ -160,7 +160,7 @@
                     </div>
 
                     <div class="video-container relative rounded-lg overflow-hidden bg-gray-300 aspect-[3/4] group shadow-sm cursor-pointer">
-                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="metadata" muted="">
+                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="auto" muted="">
                             <source src="media/ceghbiugdmrk.mp4" type="video/mp4">
                         </video>
                         <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity">
@@ -176,7 +176,7 @@
                     </div>
 
                     <div class="video-container relative rounded-lg overflow-hidden bg-gray-300 aspect-[3/4] group shadow-sm cursor-pointer">
-                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="metadata" muted="">
+                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="auto" muted="">
                             <source src="media/qoesw3o5dy3r.mp4" type="video/mp4">
                         </video>
                         <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity">
@@ -192,7 +192,7 @@
                     </div>
 
                     <div class="video-container relative rounded-lg overflow-hidden bg-gray-300 aspect-[3/4] group shadow-sm cursor-pointer">
-                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="metadata" muted="">
+                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="auto" muted="">
                             <source src="media/aqoymlyvyzoh.mp4" type="video/mp4">
                         </video>
                         <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity">
@@ -444,8 +444,7 @@
                 let isLocked = false;
 
                 video.addEventListener('loadedmetadata', () => {
-                    // Mostrar o primeiro frame do vídeo
-                    video.currentTime = 0;
+                    // Video loaded successfully
                 });
 
                 video.addEventListener('error', () => {
