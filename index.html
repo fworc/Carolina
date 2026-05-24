@@ -143,11 +143,10 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-2 mb-2">
-                    <div class="video-container relative rounded-lg overflow-hidden bg-black aspect-[3/4] group shadow-sm cursor-pointer">
-                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="auto" muted="" poster="media/iux06eqabiz2.jpg">
+                    <div class="video-container relative rounded-lg overflow-hidden bg-gray-300 aspect-[3/4] group shadow-sm cursor-pointer">
+                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="metadata" muted="">
                             <source src="media/iux06eqabiz2.mp4" type="video/mp4">
                         </video>
-                        <img class="preview-fallback hidden w-full h-full object-cover" src="media/iux06eqabiz2.jpg" alt="Prévia de vídeo">
                         <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity">
                             <div class="w-12 h-12 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white shadow-lg">
                                 <i class="fa-solid fa-play ml-1 text-xl"></i>
@@ -160,11 +159,10 @@
                         </div>
                     </div>
 
-                    <div class="video-container relative rounded-lg overflow-hidden bg-black aspect-[3/4] group shadow-sm cursor-pointer">
-                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="auto" muted="" poster="media/ceghbiugdmrk.jpg">
+                    <div class="video-container relative rounded-lg overflow-hidden bg-gray-300 aspect-[3/4] group shadow-sm cursor-pointer">
+                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="metadata" muted="">
                             <source src="media/ceghbiugdmrk.mp4" type="video/mp4">
                         </video>
-                        <img class="preview-fallback w-full h-full object-cover" src="media/ceghbiugdmrk.jpg" alt="Prévia de vídeo">
                         <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity">
                             <div class="w-12 h-12 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white shadow-lg">
                                 <i class="fa-solid fa-play ml-1 text-xl"></i>
@@ -177,11 +175,10 @@
                         </div>
                     </div>
 
-                    <div class="video-container relative rounded-lg overflow-hidden bg-black aspect-[3/4] group shadow-sm cursor-pointer">
-                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="auto" muted="" poster="media/qoesw3o5dy3r.jpg">
+                    <div class="video-container relative rounded-lg overflow-hidden bg-gray-300 aspect-[3/4] group shadow-sm cursor-pointer">
+                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="metadata" muted="">
                             <source src="media/qoesw3o5dy3r.mp4" type="video/mp4">
                         </video>
-                        <img class="preview-fallback w-full h-full object-cover" src="media/qoesw3o5dy3r.jpg" alt="Prévia de vídeo">
                         <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity">
                             <div class="w-12 h-12 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white shadow-lg">
                                 <i class="fa-solid fa-play ml-1 text-xl"></i>
@@ -194,11 +191,10 @@
                         </div>
                     </div>
 
-                    <div class="video-container relative rounded-lg overflow-hidden bg-black aspect-[3/4] group shadow-sm cursor-pointer">
-                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="auto" muted="" poster="media/aqoymlyvyzoh.jpg">
+                    <div class="video-container relative rounded-lg overflow-hidden bg-gray-300 aspect-[3/4] group shadow-sm cursor-pointer">
+                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="metadata" muted="">
                             <source src="media/aqoymlyvyzoh.mp4" type="video/mp4">
                         </video>
-                        <img class="preview-fallback w-full h-full object-cover" src="media/aqoymlyvyzoh.jpg" alt="Prévia de vídeo">
                         <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity">
                             <div class="w-12 h-12 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white shadow-lg">
                                 <i class="fa-solid fa-play ml-1 text-xl"></i>
@@ -448,19 +444,13 @@
                 let isLocked = false;
 
                 video.addEventListener('loadedmetadata', () => {
-                    const fallback = container.querySelector('.preview-fallback');
-                    if (fallback) {
-                        fallback.classList.add('hidden');
-                    }
+                    // Mostrar o primeiro frame do vídeo
+                    video.currentTime = 0;
                 });
 
                 video.addEventListener('error', () => {
-                    const fallback = container.querySelector('.preview-fallback');
-                    if (fallback) {
-                        video.classList.add('hidden');
-                        fallback.classList.remove('hidden');
-                        playOverlay.classList.add('hidden');
-                    }
+                    // Video failed to load - show gray placeholder
+                    container.classList.add('bg-gray-400');
                 });
 
                 container.addEventListener('click', () => {
