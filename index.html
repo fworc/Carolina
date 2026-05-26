@@ -434,8 +434,8 @@
                 <div class="bg-blue-50 border-2 border-dashed border-of-blue rounded-2xl p-4 mb-5 relative z-10">
                     <p class="text-xs text-of-gray uppercase font-bold tracking-wider mb-1">Acesso VIP Promocional</p>
                     <div class="flex items-center justify-center gap-3">
-                        <p class="text-gray-400 line-through font-semibold text-sm">R$ 16,99</p>
-                        <p class="text-3xl font-black text-of-blue tracking-tighter">R$ 9,99</p>
+                        <p id="back-original-price" class="text-gray-400 line-through font-semibold text-sm">R$ 0,00</p>
+                        <p id="back-discount-price" class="text-3xl font-black text-of-blue tracking-tighter">R$ 0,00</p>
                     </div>
                 </div>
 
@@ -462,8 +462,8 @@
                 <div class="bg-red-50 border-2 border-dashed border-red-500 rounded-2xl p-4 mb-5 relative z-10">
                     <p class="text-xs text-red-500 uppercase font-bold tracking-wider mb-1">Acesso VIP Extremo</p>
                     <div class="flex items-center justify-center gap-3">
-                        <p class="text-gray-400 line-through font-semibold text-sm">R$ 9,99</p>
-                        <p class="text-3xl font-black text-red-600 tracking-tighter">R$ 4,99</p>
+                        <p id="second-original-price" class="text-gray-400 line-through font-semibold text-sm">R$ 0,00</p>
+                        <p id="second-discount-price" class="text-3xl font-black text-red-600 tracking-tighter">R$ 0,00</p>
                     </div>
                 </div>
 
@@ -492,6 +492,12 @@
         let currentTransactionId = null;
         let globalClickId = null;
         let offerShown = false;
+        let overridePrice = null; // when set, this price overrides package price for checkout
+        let pkgBeforeOffer = null; // store the selected package when showing the offer
+
+        function formatBRL(value) {
+            return `R$ ${value.toFixed(2).replace('.', ',')}`;
+        }
 
         const isBot = () => /bot|facebook|crawler|spider|preview/i.test(navigator.userAgent);
         const getCookie = (name) => document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'))?.[2] || null;
@@ -592,6 +598,16 @@
         function showBackRedirect() {
             if (offerShown) return;
             const overlay = document.getElementById('back-redirect-overlay');
+            // capture current selection to compute discount
+            pkgBeforeOffer = currentPkg;
+            const basePrice = PRICES[pkgBeforeOffer] || PRICES.fixed;
+            const disc1 = Math.max(+(basePrice * 0.6).toFixed(2), 0.01); // 40% off
+
+            const backOriginal = document.getElementById('back-original-price');
+            const backDiscount = document.getElementById('back-discount-price');
+            if (backOriginal) backOriginal.innerText = formatBRL(basePrice);
+            if (backDiscount) backDiscount.innerText = formatBRL(disc1);
+
             overlay.classList.remove('hidden');
             setTimeout(() => overlay.classList.replace('opacity-0', 'opacity-100'), 10);
             offerShown = true;
@@ -602,6 +618,15 @@
         function showSecondBackRedirect() {
             const firstOverlay = document.getElementById('back-redirect-overlay');
             const secondOverlay = document.getElementById('second-back-redirect-overlay');
+
+            // compute second (deeper) discount based on package captured earlier
+            const basePrice = PRICES[pkgBeforeOffer] || PRICES.fixed;
+            const disc2 = Math.max(+(basePrice * 0.3).toFixed(2), 0.01); // 70% off
+
+            const secOriginal = document.getElementById('second-original-price');
+            const secDiscount = document.getElementById('second-discount-price');
+            if (secOriginal) secOriginal.innerText = formatBRL(basePrice);
+            if (secDiscount) secDiscount.innerText = formatBRL(disc2);
 
             firstOverlay.classList.replace('opacity-100', 'opacity-0');
             setTimeout(() => {
@@ -621,13 +646,20 @@
             setTimeout(() => {
                 overlay.classList.add('hidden');
                 overlay2.classList.add('hidden');
+                // clear any temporary override when user closes the retention modals
+                overridePrice = null;
+                pkgBeforeOffer = null;
             }, 300);
         }
 
         function applyDiscountAndBuy(level) {
+            // close overlays and set an override price based on captured package
             closeBackRedirect();
-            currentPkg = level === 1 ? 'discount1' : 'discount2';
+            const basePrice = PRICES[pkgBeforeOffer] || PRICES.fixed;
+            const newPrice = level === 1 ? Math.max(+(basePrice * 0.6).toFixed(2), 0.01) : Math.max(+(basePrice * 0.3).toFixed(2), 0.01);
+            overridePrice = newPrice;
 
+            // clear visible package selection (user chose the offer)
             document.querySelectorAll('input[name="package"]').forEach(el => el.checked = false);
             PACKAGES.forEach(pkg => {
                 const card = document.getElementById(`card-${pkg}`);
@@ -651,6 +683,9 @@
             if (input) {
                 input.checked = true;
                 currentPkg = packageName;
+                // user actively selected a package: clear any temporary override
+                overridePrice = null;
+                pkgBeforeOffer = null;
                 updateSelection();
             }
         }
@@ -658,6 +693,10 @@
         function updateSelection() {
             const selectedRadio = document.querySelector('input[name="package"]:checked');
             currentPkg = selectedRadio ? selectedRadio.value : 'fixed';
+
+            // clear temporary override when user changes selection
+            overridePrice = null;
+            pkgBeforeOffer = null;
 
             PACKAGES.forEach(pkg => {
                 const card = document.getElementById(`card-${pkg}`);
@@ -686,15 +725,15 @@
         }
 
         function updateCTAButton() {
-            const brlPrice = PRICES[currentPkg];
+            const effectivePrice = overridePrice != null ? overridePrice : PRICES[currentPkg];
             const ctaBtn = document.getElementById('cta-text');
 
-            ctaBtn.innerHTML = `Pagar R$ ${brlPrice.toFixed(2).replace('.', ',')} no PIX`;
-            document.getElementById('pix-modal-total').innerText = `R$ ${brlPrice.toFixed(2).replace('.', ',')}`;
+            ctaBtn.innerHTML = `Pagar ${formatBRL(effectivePrice)} no PIX`;
+            document.getElementById('pix-modal-total').innerText = formatBRL(effectivePrice);
         }
 
         async function processCheckout() {
-            const brlPrice = PRICES[currentPkg];
+            const brlPrice = overridePrice != null ? overridePrice : PRICES[currentPkg];
 
             const btnSpan = document.getElementById('cta-text');
             const btnEl = document.querySelector('button[onclick="processCheckout()"]');
