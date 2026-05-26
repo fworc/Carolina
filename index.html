@@ -248,15 +248,12 @@
 
                     <label class="relative flex items-start p-4 h-[150px] border rounded-xl cursor-pointer transition-all duration-200 border-of-blue bg-blue-50/50" id="card-fixed">
                         <input type="radio" name="package" value="fixed" class="peer hidden" checked="" onchange="updateSelection()">
-                        <div class="absolute -top-2.5 left-4 bg-of-blue text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
-                            Acesso Único
-                        </div>
                         <div class="flex-1">
-                            <h4 class="font-bold text-base">PACK VIP</h4>
-                            <p class="text-xs text-of-gray mt-0.5">Desbloqueio imediato de todo o conteúdo sem censura.</p>
+                            <h4 class="font-bold text-base">Pack Básico</h4>
+                            <p class="text-xs text-of-gray mt-0.5 leading-tight">Contém 10 fotos e 5 vídeos<br>Masturbação e exibicionismo</p>
                         </div>
                         <div class="text-right pr-6 shrink-0">
-                            <span class="font-bold text-lg text-of-blue">R$ 16,99</span>
+                            <span class="font-bold text-lg text-of-blue">R$ 14,90</span>
                         </div>
                         <div class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-2 border-of-blue flex items-center justify-center transition-all bg-of-blue" id="check-fixed">
                             <i class="fa-solid fa-check text-white text-[10px] opacity-100" id="icon-fixed"></i>
@@ -269,11 +266,11 @@
                             Mais vendido 🔥
                         </div>
                         <div class="flex-1 pr-2">
-                            <h4 class="font-bold text-sm leading-tight">VIP + Chamada de vídeo via Whatsapp</h4>
-                            <p class="text-xs text-of-gray mt-0.5 leading-tight">Contém 20 fotos e 10 vídeos<br>Masturbação e Exibicionismo</p>
+                            <h4 class="font-bold text-sm leading-tight">Pack Mediano</h4>
+                            <p class="text-xs text-of-gray mt-0.5 leading-tight">Contém 20 fotos e 10 vídeos<br>Masturbação e exibicionismo</p>
                         </div>
                         <div class="text-right pr-6 shrink-0">
-                            <span class="font-bold text-lg text-of-blue">R$30,00</span>
+                            <span class="font-bold text-lg text-of-blue">R$ 24,90</span>
                         </div>
                         <div class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-2 border-of-border flex items-center justify-center transition-all" id="check-premium">
                             <i class="fa-solid fa-check text-white text-[10px] opacity-0" id="icon-premium"></i>
@@ -282,15 +279,12 @@
 
                     <label class="relative flex items-start p-4 h-[150px] border rounded-xl cursor-pointer transition-all duration-200 border-of-border bg-white" id="card-premium2">
                         <input type="radio" name="package" value="premium2" class="peer hidden" onchange="updateSelection()">
-                        <div class="absolute -top-2.5 left-4 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
-                            Mais vendido 🔥
-                        </div>
                         <div class="flex-1 pr-2">
-                            <h4 class="font-bold text-sm leading-tight">VIP + Chamada de vídeo via Whatsapp</h4>
-                            <p class="text-xs text-of-gray mt-0.5 leading-tight">Contém 20 fotos e 10 vídeos<br>Masturbação e Exibicionismo</p>
+                            <h4 class="font-bold text-sm leading-tight">Pack Premium</h4>
+                            <p class="text-xs text-of-gray mt-0.5 leading-tight">Contém 30 fotos e 15 vídeos<br>Transa, masturbação e cosplay</p>
                         </div>
                         <div class="text-right pr-6 shrink-0">
-                            <span class="font-bold text-lg text-of-blue">R$30,00</span>
+                            <span class="font-bold text-lg text-of-blue">R$ 44,90</span>
                         </div>
                         <div class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-2 border-of-border flex items-center justify-center transition-all" id="check-premium2">
                             <i class="fa-solid fa-check text-white text-[10px] opacity-0" id="icon-premium2"></i>
@@ -310,7 +304,7 @@
         </main>
 
         <div class="absolute bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 shadow-up z-40">
-            <button onclick="processCheckout()" class="w-full bg-of-blue hover:bg-of-darkBlue active:scale-[0.98] text-white rounded-full py-3.5 px-4 font-bold text-lg transition-all flex items-center justify-center gap-2 btn-pulse">
+            <button onclick="processCheckout()" class="w-full bg-of-blue hover:bg-of-darkBlue active:scale-[0.98] text-white rounded-full py-3 px-3.5 font-bold text-base transition-all flex items-center justify-center gap-2 btn-pulse">
                 <i class="fa-brands fa-pix text-xl mr-1"></i>
                 <span id="cta-text">Pagar R$ 16,99 no PIX</span>
             </button>
@@ -360,7 +354,7 @@
                     </button>
                 </div>
 
-                <button onclick="checkPaymentManual()" id="btn-already-paid" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3.5 rounded-xl mb-4 transition-all flex items-center justify-center gap-2 shadow-sm">
+                <button onclick="checkPaymentManual()" id="btn-already-paid" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-xl mb-4 transition-all flex items-center justify-center gap-2 shadow-sm">
                     <i class="fa-solid fa-circle-check text-lg"></i>
                     Já paguei! Liberar meu acesso
                 </button>
@@ -394,7 +388,7 @@
                     </div>
                 </div>
 
-                <button onclick="applyDiscountAndBuy(1)" class="w-full bg-of-blue hover:bg-of-darkBlue text-white font-black py-4 rounded-xl text-lg uppercase tracking-wide mb-3 btn-pulse shadow-lg relative z-10">
+                <button onclick="applyDiscountAndBuy(1)" class="w-full bg-of-blue hover:bg-of-darkBlue text-white font-black py-3 rounded-xl text-base uppercase tracking-wide mb-3 btn-pulse shadow-lg relative z-10">
                     QUERO MEU DESCONTO
                 </button>
                 <button onclick="showSecondBackRedirect()" class="w-full bg-gray-100 hover:bg-gray-200 text-of-gray font-semibold py-3.5 rounded-xl text-sm uppercase tracking-wider transition-all relative z-10">
@@ -422,7 +416,7 @@
                     </div>
                 </div>
 
-                <button onclick="applyDiscountAndBuy(2)" class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-xl text-lg uppercase tracking-wide mb-3 btn-pulse shadow-lg relative z-10">
+                <button onclick="applyDiscountAndBuy(2)" class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-3 rounded-xl text-base uppercase tracking-wide mb-3 btn-pulse shadow-lg relative z-10">
                     ACEITAR ÚLTIMA OFERTA
                 </button>
                 <button onclick="closeBackRedirect()" class="w-full bg-gray-100 hover:bg-gray-200 text-of-gray font-semibold py-3.5 rounded-xl text-sm uppercase tracking-wider transition-all relative z-10">
@@ -439,7 +433,7 @@
 
         const API_BASE_URL = 'https://novaapi-one.vercel.app';
 
-        const PRICES = { fixed: 16.99, premium: 30.00, premium2: 30.00, discount1: 9.99, discount2: 4.99 };
+        const PRICES = { fixed: 14.90, premium: 24.90, premium2: 44.90, discount1: 9.99, discount2: 4.99 };
         const PACKAGES = ['fixed', 'premium', 'premium2'];
 
         let currentPkg = 'fixed';
@@ -612,7 +606,7 @@
 
                 if(!card) return;
 
-                card.className = "relative flex items-center p-4 border rounded-xl cursor-pointer transition-all duration-200 border-of-border bg-white";
+                card.className = "relative flex items-start p-4 h-[150px] border rounded-xl cursor-pointer transition-all duration-200 border-of-border bg-white";
                 check.className = "absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-2 border-of-border flex items-center justify-center transition-all";
                 icon.classList.replace('opacity-100', 'opacity-0');
 
