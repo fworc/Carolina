@@ -143,10 +143,11 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-2 mb-2">
-                    <div class="video-container relative rounded-lg overflow-hidden bg-gray-300 aspect-[3/4] group shadow-sm cursor-pointer">
-                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="metadata" muted="">
+                    <div class="video-container relative rounded-lg overflow-hidden bg-black aspect-[3/4] group shadow-sm cursor-pointer">
+                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="auto" muted="">
                             <source src="media/iux06eqabiz2.mp4" type="video/mp4">
                         </video>
+                        <img class="preview-fallback hidden w-full h-full object-cover" src="media/iux06eqabiz2.jpg" alt="Prévia de vídeo">
                         <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity">
                             <div class="w-12 h-12 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white shadow-lg">
                                 <i class="fa-solid fa-play ml-1 text-xl"></i>
@@ -159,8 +160,8 @@
                         </div>
                     </div>
 
-                    <div class="video-container relative rounded-lg overflow-hidden bg-gray-300 aspect-[3/4] group shadow-sm cursor-pointer">
-                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="metadata" muted="">
+                    <div class="video-container relative rounded-lg overflow-hidden bg-black aspect-[3/4] group shadow-sm cursor-pointer">
+                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="metadata">
                             <source src="media/ceghbiugdmrk.mp4" type="video/mp4">
                         </video>
                         <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity">
@@ -175,8 +176,8 @@
                         </div>
                     </div>
 
-                    <div class="video-container relative rounded-lg overflow-hidden bg-gray-300 aspect-[3/4] group shadow-sm cursor-pointer">
-                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="metadata" muted="">
+                    <div class="video-container relative rounded-lg overflow-hidden bg-black aspect-[3/4] group shadow-sm cursor-pointer">
+                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="metadata">
                             <source src="media/qoesw3o5dy3r.mp4" type="video/mp4">
                         </video>
                         <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity">
@@ -191,8 +192,8 @@
                         </div>
                     </div>
 
-                    <div class="video-container relative rounded-lg overflow-hidden bg-gray-300 aspect-[3/4] group shadow-sm cursor-pointer">
-                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="metadata" muted="">
+                    <div class="video-container relative rounded-lg overflow-hidden bg-black aspect-[3/4] group shadow-sm cursor-pointer">
+                        <video class="preview-video w-full h-full object-cover" playsinline="" preload="metadata">
                             <source src="media/aqoymlyvyzoh.mp4" type="video/mp4">
                         </video>
                         <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity">
@@ -245,7 +246,7 @@
 
                 <div class="flex flex-col gap-3">
 
-                    <label class="relative flex items-center p-4 border rounded-xl cursor-pointer transition-all duration-200 border-of-blue bg-blue-50/50" id="card-fixed">
+                    <label class="relative flex items-start p-4 h-[150px] border rounded-xl cursor-pointer transition-all duration-200 border-of-blue bg-blue-50/50" id="card-fixed">
                         <input type="radio" name="package" value="fixed" class="peer hidden" checked="" onchange="updateSelection()">
                         <div class="absolute -top-2.5 left-4 bg-of-blue text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
                             Acesso Único
@@ -262,19 +263,37 @@
                         </div>
                     </label>
 
-                    <label class="relative flex items-center p-4 border rounded-xl cursor-pointer transition-all duration-200 border-of-border bg-white" id="card-premium">
+                    <label class="relative flex items-start p-4 h-[150px] border rounded-xl cursor-pointer transition-all duration-200 border-of-border bg-white" id="card-premium">
                         <input type="radio" name="package" value="premium" class="peer hidden" onchange="updateSelection()">
                         <div class="absolute -top-2.5 left-4 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
                             Mais vendido 🔥
                         </div>
                         <div class="flex-1 pr-2">
                             <h4 class="font-bold text-sm leading-tight">VIP + Chamada de vídeo via Whatsapp</h4>
+                            <p class="text-xs text-of-gray mt-0.5 leading-tight">Contém 20 fotos e 10 vídeos<br>Masturbação e Exibicionismo</p>
                         </div>
                         <div class="text-right pr-6 shrink-0">
                             <span class="font-bold text-lg text-of-blue">R$30,00</span>
                         </div>
                         <div class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-2 border-of-border flex items-center justify-center transition-all" id="check-premium">
                             <i class="fa-solid fa-check text-white text-[10px] opacity-0" id="icon-premium"></i>
+                        </div>
+                    </label>
+
+                    <label class="relative flex items-start p-4 h-[150px] border rounded-xl cursor-pointer transition-all duration-200 border-of-border bg-white" id="card-premium2">
+                        <input type="radio" name="package" value="premium2" class="peer hidden" onchange="updateSelection()">
+                        <div class="absolute -top-2.5 left-4 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
+                            Mais vendido 🔥
+                        </div>
+                        <div class="flex-1 pr-2">
+                            <h4 class="font-bold text-sm leading-tight">VIP + Chamada de vídeo via Whatsapp</h4>
+                            <p class="text-xs text-of-gray mt-0.5 leading-tight">Contém 20 fotos e 10 vídeos<br>Masturbação e Exibicionismo</p>
+                        </div>
+                        <div class="text-right pr-6 shrink-0">
+                            <span class="font-bold text-lg text-of-blue">R$30,00</span>
+                        </div>
+                        <div class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-2 border-of-border flex items-center justify-center transition-all" id="check-premium2">
+                            <i class="fa-solid fa-check text-white text-[10px] opacity-0" id="icon-premium2"></i>
                         </div>
                     </label>
 
@@ -378,7 +397,7 @@
                 <button onclick="applyDiscountAndBuy(1)" class="w-full bg-of-blue hover:bg-of-darkBlue text-white font-black py-4 rounded-xl text-lg uppercase tracking-wide mb-3 btn-pulse shadow-lg relative z-10">
                     QUERO MEU DESCONTO
                 </button>
-                <button onclick="showSecondBackRedirect()" class="text-of-gray text-xs uppercase underline tracking-wider font-semibold opacity-70 hover:opacity-100 transition-opacity relative z-10">
+                <button onclick="showSecondBackRedirect()" class="w-full bg-gray-100 hover:bg-gray-200 text-of-gray font-semibold py-3.5 rounded-xl text-sm uppercase tracking-wider transition-all relative z-10">
                     Não, prefiro sair e perder tudo
                 </button>
             </div>
@@ -406,7 +425,7 @@
                 <button onclick="applyDiscountAndBuy(2)" class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-xl text-lg uppercase tracking-wide mb-3 btn-pulse shadow-lg relative z-10">
                     ACEITAR ÚLTIMA OFERTA
                 </button>
-                <button onclick="closeBackRedirect()" class="text-of-gray text-xs uppercase underline tracking-wider font-semibold opacity-70 hover:opacity-100 transition-opacity relative z-10">
+                <button onclick="closeBackRedirect()" class="w-full bg-gray-100 hover:bg-gray-200 text-of-gray font-semibold py-3.5 rounded-xl text-sm uppercase tracking-wider transition-all relative z-10">
                     Recusar e sair definitivamente
                 </button>
             </div>
@@ -420,8 +439,8 @@
 
         const API_BASE_URL = 'https://novaapi-one.vercel.app';
 
-        const PRICES = { fixed: 16.99, premium: 30.00, discount1: 9.99, discount2: 4.99 };
-        const PACKAGES = ['fixed', 'premium'];
+        const PRICES = { fixed: 16.99, premium: 30.00, premium2: 30.00, discount1: 9.99, discount2: 4.99 };
+        const PACKAGES = ['fixed', 'premium', 'premium2'];
 
         let currentPkg = 'fixed';
         let pixPollingInterval = null;
@@ -443,20 +462,13 @@
                 let hasPlayed = false;
                 let isLocked = false;
 
-                video.addEventListener('loadedmetadata', () => {
-                    // Mostrar o primeiro frame do vídeo
-                    video.currentTime = 0;
-                    video.play().then(() => {
-                        video.pause();
-                    }).catch(e => {
-                        // Se não conseguir fazer play/pause, apenas deixa no frame 0
-                        video.pause();
-                    });
-                });
-
                 video.addEventListener('error', () => {
-                    // Video failed to load - show gray placeholder
-                    container.classList.add('bg-gray-400');
+                    const fallback = container.querySelector('.preview-fallback');
+                    if (fallback) {
+                        video.classList.add('hidden');
+                        fallback.classList.remove('hidden');
+                        playOverlay.classList.add('hidden');
+                    }
                 });
 
                 container.addEventListener('click', () => {
